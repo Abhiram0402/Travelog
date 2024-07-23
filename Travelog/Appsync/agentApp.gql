@@ -1,0 +1,141 @@
+input CreatePostInput {
+	phone_number: String!
+	travelogue_id: String!
+	pov_id: String!
+	post_type: String!
+	post_url: String!
+}
+
+input CreatePovInput {
+	phone_number: String!
+	travelogue_id: String!
+	pov_duration_day: Int
+	pov_name: String!
+	pov_latitude: String!
+	pov_longitude: String!
+	pov_notes: String
+}
+
+input CreateTravelogueInput {
+	travelogue_id: String!
+	agent_phone_number: String
+	travelogue_name: String!
+	travelogue_image: String
+	country_code: String
+	travelogue_description: String!
+	travelogue_Departure_state: String
+	travelogue_Departure_country: String
+	price: String
+	inclusions: String
+	exclusions: String
+}
+
+input DeletePostInput {
+	post_id: String!
+}
+
+input DeletePovInput {
+	travelogue_id: String!
+	pov_id: String!
+}
+
+input DeleteTravelogueInput {
+	phone_number: String!
+	travelogue_id: String!
+}
+
+input EditPovInput {
+	phone_number: String!
+	travelogue_id: String!
+	pov_id: String!
+	pov_name: String!
+	pov_latitude: String
+	pov_longitude: String
+	pov_notes: String
+	pov_duration_day: String
+}
+
+input GetAgentInput {
+	agent_email: String!
+}
+
+input ListApprovedTravelogueInput {
+	phone_number: String!
+}
+
+input ListPendingTravelogueInput {
+	phone_number: String!
+}
+
+input ListPostInput {
+	pov_id: String!
+}
+
+input ListPovInput {
+	travelogue_id: String!
+}
+
+input ListRejectedTravelogueInput {
+	phone_number: String!
+}
+
+input ListTravelogueInput {
+	phone_number: String!
+}
+
+input PublishTravelogueInput {
+	phone_number: String!
+	travelogue_id: String!
+}
+
+input S3URLDownloadInput {
+	key: String!
+}
+
+input UpdateTravelogueInput {
+	travelogue_id: String!
+	travelogue_name: String
+	travelogue_description: String
+	travelogue_image: String
+}
+
+input package_details_input {
+	price: String
+	inclusions: String
+	exclusions: String
+	special_note: String
+}
+
+input s3UrlInput {
+	key: String!
+}
+
+type Mutation {
+	agent_travelogue_creation(input: CreateTravelogueInput): AWSJSON
+	publish_travelogue(input: PublishTravelogueInput): AWSJSON
+	update_travelogue_details(input: UpdateTravelogueInput): AWSJSON
+	delete_travelogue_status(input: DeleteTravelogueInput): AWSJSON
+	pov_creation(input: CreatePovInput): AWSJSON
+	edit_pov(input: EditPovInput): AWSJSON
+	delete_pov(input: DeletePovInput): AWSJSON
+	post_creation(input: CreatePostInput): AWSJSON
+	delete_post(input: DeletePostInput): AWSJSON
+}
+
+type Query {
+	get_agent(input: GetAgentInput): AWSJSON
+	list_my_draft_travelogues(input: ListTravelogueInput): AWSJSON
+	list_pending_approval_travelogues(input: ListPendingTravelogueInput): AWSJSON
+	list_rejected_travelogues(input: ListRejectedTravelogueInput): AWSJSON
+	list_approved_agent_travelogues(input: ListApprovedTravelogueInput): AWSJSON
+	list_pov(input: ListPovInput): AWSJSON
+	list_post(input: ListPostInput): AWSJSON
+	travelogS3URL_for_download(input: S3URLDownloadInput): AWSJSON
+	travelogS3URL(input: s3UrlInput): AWSJSON
+	list_approved_travelogues: AWSJSON
+}
+
+schema {
+	query: Query
+	mutation: Mutation
+}

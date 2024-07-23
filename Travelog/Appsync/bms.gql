@@ -1,0 +1,358 @@
+input ApprovePendingTravelogueInput {
+	travelogue_id: String!
+}
+
+input CreateAgentInput {
+	travel_agency_name: String!
+	agent_name: String!
+	agent_email: String!
+	agent_phone_number: String!
+	country_code: String!
+	logo: String
+}
+
+input DeactivateAgentInput {
+	agent_phone_number: String!
+}
+
+enum Decision {
+	ENABLE
+	DISABLE
+}
+
+enum DecisionInput {
+	APPROVE
+	REJECT
+}
+
+input GetAdminInput {
+	admin_email: String!
+}
+
+input GetAgentInput {
+	agent_email: String!
+}
+
+input ListAgentPendingTravelogueInput {
+	phone_number: String!
+}
+
+input ListAgentRejectedTravelogueInput {
+	phone_number: String!
+}
+
+input ListApprovedTravelogueInput {
+	phone_number: String!
+}
+
+input ListPostInput {
+	pov_id: String!
+}
+
+input ListPovInput {
+	travelogue_id: String!
+}
+
+input ListTravelogueInput {
+	phone_number: String!
+}
+
+input RejectPendingTravelogueInput {
+	travelogue_id: String!
+	rejection_reason: String!
+}
+
+input adminDecisionInput {
+	admin_id: String
+	sherpa_id: String
+	admin_decision: DecisionInput
+}
+
+input approve_restaurant_input {
+	admin_id: String!
+	restaurant_id: String!
+	restaurant_decision: decision!
+}
+
+input createAdminInput {
+	admin_id: String!
+	admin_name: String!
+	admin_email: String!
+	user_type: userType
+}
+
+input createPostInput {
+	pov_id: String!
+	post_url: String
+}
+
+input create_my_profile_for_sherpa_input {
+	admin_id: String!
+	sherpa_name: String!
+	about: String!
+	sherpa_email_id: String!
+	phone_number: String!
+	profile_pic_url: String
+	sherpa_latitude: String!
+	sherpa_longitude: String!
+}
+
+input create_post_for_restaurant_input {
+	admin_id: String
+	restaurant_id: String
+	post_url: String
+}
+
+input create_pov_input {
+	admin_id: String!
+	pov_name: String!
+	pov_description: String!
+	pov_latitude: String!
+	pov_longitude: String!
+}
+
+input create_restaurant_input {
+	admin_id: String!
+	restaurant_name: String!
+	about: String!
+	restaurant_latitude: String!
+	restaurant_longitude: String!
+}
+
+enum decision {
+	APPROVE
+	REJECT
+}
+
+input deleteAdminInput {
+	admin_id: String!
+	admin_email: String!
+}
+
+input deletePostInput {
+	pov_id: String!
+	post_url: String
+}
+
+input deletePovsInput {
+	pov_id: String
+}
+
+input delete_ambience_images_for_restaurant_input {
+	restaurant_id: String
+	ambience_url: String
+}
+
+input delete_food_images_for_restaurant_input {
+	restaurant_id: String
+	food_url: String
+}
+
+input delete_menu_images_for_restaurant_input {
+	restaurant_id: String
+	menu_url: String
+}
+
+input delete_post_for_restaurant_input {
+	admin_id: String
+	restaurant_id: String
+	post_url: String
+}
+
+input delete_restaurant_input {
+	admin_id: String
+	restaurant_id: String
+}
+
+input delete_sherpa_input {
+	admin_id: String!
+	sherpa_id: String!
+}
+
+input edit_global_povs_input {
+	pov_id: String!
+	pov_name: String
+	pov_description: String
+	pov_latitude: String
+	pov_longitude: String
+}
+
+input edit_pov_for_pov_curator_input {
+	pov_id: String!
+	pov_name: String
+	pov_description: String
+	pov_latitude: String
+	pov_longitude: String
+}
+
+input edit_restaurant_input {
+	admin_id: String
+	restaurant_id: String
+	restaurant_name: String
+	about: String
+	restaurant_latitude: String
+	restaurant_longitude: String
+}
+
+input edit_sherpa_profile_input {
+	admin_id: String!
+	sherpa_id: String!
+	sherpa_email_id: String
+	profile_pic_url: String
+	phone_number: String
+	sherpa_name: String
+	about: String
+	sherpa_latitude: String
+	sherpa_longitude: String
+}
+
+input enable_or_disable_sherpa_listings_decision {
+	admin_id: String!
+	admin_decision: Decision!
+}
+
+input listGlobalPostsInput {
+	pov_id: String
+}
+
+input list_my_restaurant_input {
+	admin_id: String
+}
+
+input list_my_sherpa_creations_input {
+	admin_id: String
+}
+
+input list_posts_of_restaurant_input {
+	restaurant_id: String!
+}
+
+input mypovInput {
+	admin_id: String
+}
+
+enum povStatus {
+	APPROVED
+	REJECTED
+}
+
+input pov_deletion_for_pov_curator_input {
+	pov_id: String
+}
+
+input travelogS3URLInput {
+	key: String
+}
+
+input travelogS3URL_for_download_input {
+	key: String
+}
+
+input update_user_pov_status {
+	admin_id: String!
+	pov_id: String!
+	pov_status: povStatus!
+}
+
+input upload_ambience_images_input {
+	restaurant_id: String
+	ambience_url: String
+}
+
+input upload_food_images_input {
+	restaurant_id: String
+	food_url: String
+}
+
+input upload_menu_images_input {
+	restaurant_id: String
+	menu_url: String
+}
+
+enum userType {
+	ADMIN
+	POV_CURATOR
+	RESTAURANT_CURATOR
+	SHERPA
+}
+
+type Mutation {
+	create_agent(input: CreateAgentInput): AWSJSON
+	create_admin(input: createAdminInput): AWSJSON
+	approve_pending_travelogues(input: ApprovePendingTravelogueInput): AWSJSON
+	Reject_pending_travelogues(input: RejectPendingTravelogueInput): AWSJSON
+	deactivate_agent(input: DeactivateAgentInput): AWSJSON
+	create_pov(input: create_pov_input): AWSJSON
+	update_user_pov_status(input: update_user_pov_status): AWSJSON
+	create_post(input: createPostInput): AWSJSON
+	delete_admin(input: deleteAdminInput): AWSJSON
+	pov_deletion(input: deletePovsInput): AWSJSON
+	edit_global_povs(input: edit_global_povs_input): AWSJSON
+	delete_post(input: deletePostInput): AWSJSON
+	update_curator_pov_status(input: update_user_pov_status): AWSJSON
+	edit_pov_for_pov_curator(input: edit_pov_for_pov_curator_input): AWSJSON
+	delete_post_for_pov_curator(input: deletePostInput): AWSJSON
+	create_restaurant(input: create_restaurant_input): AWSJSON
+	# upload_food_images(input: upload_food_images_input): AWSJSON
+	# upload_menu_images(input: upload_menu_images_input): AWSJSON
+	# upload_ambience_images(input: upload_ambience_images_input): AWSJSON
+	pov_deletion_for_pov_curator(input: pov_deletion_for_pov_curator_input): AWSJSON
+	approve_or_reject_restaurant(input: approve_restaurant_input): AWSJSON
+	edit_restaurant(input: edit_restaurant_input): AWSJSON
+	delete_post_for_restaurant(input: delete_post_for_restaurant_input): AWSJSON
+	# delete_menu_images_for_restaurant(input: delete_menu_images_for_restaurant_input): AWSJSON
+	# delete_food_images_for_restaurant(input: delete_food_images_for_restaurant_input): AWSJSON
+	# delete_ambience_images_for_restaurant(input: delete_ambience_images_for_restaurant_input): AWSJSON
+	create_my_profile_for_sherpa(input: create_my_profile_for_sherpa_input): AWSJSON
+	update_sherpa_profile_status(input: adminDecisionInput): AWSJSON
+	edit_sherpa_profile(input: edit_sherpa_profile_input): AWSJSON
+	delete_restaurant(input: delete_restaurant_input): AWSJSON
+	create_post_for_restaurant(input: create_post_for_restaurant_input): AWSJSON
+	delete_sherpa(input: delete_sherpa_input): AWSJSON
+	enable_or_disable_sherpa_listings(input: enable_or_disable_sherpa_listings_decision): AWSJSON
+	enable_or_disable_restaurant_listings(input: enable_or_disable_sherpa_listings_decision): AWSJSON
+}
+
+type Query {
+	get_admin(input: GetAdminInput): AWSJSON
+	get_agent(input: GetAgentInput): AWSJSON
+	list_agent_travelogues(input: ListTravelogueInput): AWSJSON
+	list_pov(input: ListPovInput): AWSJSON
+	list_post(input: ListPostInput): AWSJSON
+	list_all_pending_approval_travelogues: AWSJSON
+	list_all_rejected_travelogues: AWSJSON
+	list_agent_pending_approval_travelogues(input: ListAgentPendingTravelogueInput): AWSJSON
+	list_agent_rejected_travelogues(input: ListAgentRejectedTravelogueInput): AWSJSON
+	list_all_approved_agent_travelogues: AWSJSON
+	list_approved_agent_travelogues(input: ListApprovedTravelogueInput): AWSJSON
+	list_users: AWSJSON
+	list_all_agents: AWSJSON
+	list_all_agent_travelogues: AWSJSON
+	list_all_travelogues: AWSJSON
+	list_all_bms_users: AWSJSON
+	list_users_pov: AWSJSON
+	list_global_pov: AWSJSON
+	travelogS3URL(input: travelogS3URLInput): AWSJSON
+	travelogS3URL_for_download(input: travelogS3URL_for_download_input): AWSJSON
+	list_global_posts(input: listGlobalPostsInput): AWSJSON
+	list_my_pov(input: mypovInput): AWSJSON
+	list_curators_pov: AWSJSON
+	list_user_devices_details: AWSJSON
+	list_pending_restaurants: AWSJSON
+	list_approved_restaurants: AWSJSON
+	list_android_devices: AWSJSON
+	list_IOS_devices: AWSJSON
+	list_pending_profiles_of_sherpas: AWSJSON
+	list_all_approved_sherpas: AWSJSON
+	list_pranavs_povs: AWSJSON
+	list_my_restaurant(input: list_my_restaurant_input): AWSJSON
+	display_sherpa_listing_decision: AWSJSON
+	display_restaurant_listing_decision: AWSJSON
+	list_my_sherpa_creations(input: list_my_sherpa_creations_input): AWSJSON
+	list_post_of_restaurant(input: list_posts_of_restaurant_input): AWSJSON
+}
+
+schema {
+	query: Query
+	mutation: Mutation
+}

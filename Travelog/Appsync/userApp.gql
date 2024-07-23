@@ -1,0 +1,282 @@
+input CancelTravelogueSubscriptionInput {
+	travelogue_id: String!
+}
+
+input CloseTravelogueInput {
+	travelogue_id: String!
+	post_status: String!
+}
+
+input CreateCotravellerInput {
+	user_name: String!
+	travelogue_id: String!
+	country_code: String!
+	phone_number: String!
+	fcm_token: String
+	mobile_details: String
+	app_version: String
+}
+
+input CreatePostInput {
+	phone_number: String!
+	travelogue_id: String!
+	pov_id: String!
+	post_type: String!
+	post_url: String!
+}
+
+input CreatePovInput {
+	phone_number: String!
+	travelogue_id: String!
+	pov_id: String!
+	pov_name: String!
+	pov_latitude: String!
+	pov_longitude: String!
+	pov_notes: String
+}
+
+input CreateTravelogueInput {
+	phone_number: String
+	travelogue_image: String
+	travelogue_name: String!
+	travelogue_description: String!
+	user_state: String
+	user_country: String
+}
+
+input CreateTravelogueSubscriptionInput {
+	travelogue_id: String!
+	phone_number: String!
+	transaction_id: String!
+}
+
+input CreateUserInput {
+	user_name: String!
+	country_code: String!
+	phone_number: String!
+	fcm_token: String!
+	mobile_details: String!
+	app_version: String!
+	user_country: String
+	user_state: String
+}
+
+input CreateViewerInput {
+	user_name: String!
+	travelogue_id: String!
+	country_code: String!
+	phone_number: String!
+	fcm_token: String
+	mobile_details: String
+	app_version: String
+}
+
+input DeleteCotrvallerInput {
+	phone_number: String!
+	travelogue_id: String!
+}
+
+input DeletePostInput {
+	travelogue_id: String!
+	pov_id: String!
+	post_id: String!
+}
+
+input DeletePovInput {
+	travelogue_id: String!
+	pov_id: String!
+}
+
+input DeleteTravelogueInput {
+	phone_number: String!
+	travelogue_id: String!
+}
+
+input DeleteUserInput {
+	phone_number: String!
+}
+
+input DeleteViewerInput {
+	phone_number: String!
+	travelogue_id: String!
+}
+
+input EditPovInput {
+	phone_number: String!
+	travelogue_id: String!
+	pov_id: String!
+	pov_name: String!
+	pov_latitude: String
+	pov_longitude: String
+	pov_notes: String
+}
+
+input EditUserInput {
+	user_id: String!
+	user_name: String
+	profile_image: String
+}
+
+input GetAgentInput {
+	agent_email: String!
+}
+
+input GetCotravellerInput {
+	phone_number: String!
+	travelogue_id: String!
+}
+
+input GetCurrentUserInput {
+	phone_number: String!
+}
+
+input GetTravelogueSubscrptionInput {
+	travelogue_id: String!
+}
+
+input GetViewerInput {
+	phone_number: String!
+	travelogue_id: String!
+}
+
+input ListPostInput {
+	travelogue_id: String!
+	pov_id: String!
+}
+
+input ListPovInput {
+	travelogue_id: String!
+}
+
+input ListSubscrptionInput {
+	travelogue_id: String!
+}
+
+input ListTravelogueByIdInput {
+	travelogue_id: String!
+}
+
+input ListTravelogueInput {
+	phone_number: String!
+}
+
+input UpdateFcmAppVerInput {
+	user_id: String!
+	fcm_token: String!
+	app_version: String!
+	mobile_details: String!
+}
+
+input UpdateTravelogueInput {
+	travelogue_id: String!
+	travelogue_name: String!
+	travelogue_description: String!
+}
+
+input createPostInput {
+	pov_id: String
+	post_url: String
+}
+
+input createPublicPovInput {
+	pov_name: String!
+	pov_description: String!
+	pov_latitude: String!
+	pov_longitude: String!
+}
+
+input departure_country_input {
+	departure_country: String
+}
+
+input display_featured_travelogues_input {
+	travelogue_Departure_state: String
+	travelogue_Departure_country: String
+}
+
+input get_nearest_povs_input {
+	user_latitude: String
+	user_longitude: String
+}
+
+input get_nearest_restaurants_input {
+	user_latitude: String
+	user_longitude: String
+}
+
+input get_nearest_sherpas_input {
+	user_latitude: String
+	user_longitude: String
+}
+
+input lisstGlobalPostsInput {
+	pov_id: String!
+}
+
+# input dummyparamInput{
+#   dummyparam: String
+# }
+input sendDeviceDetailsInput {
+	device_id: String
+	os_type: String
+	version: String
+}
+
+input travelogueS3UrlInput {
+	key: String
+}
+
+type Mutation {
+	create_user(input: CreateUserInput): AWSJSON
+	edit_user_profile(input: EditUserInput): AWSJSON
+	delete_account(input: DeleteUserInput): AWSJSON
+	create_cotraveller(input: CreateCotravellerInput): AWSJSON
+	create_viewer(input: CreateViewerInput): AWSJSON
+	delete_cotraveller(input: DeleteCotrvallerInput): AWSJSON
+	delete_viewer(input: DeleteViewerInput): AWSJSON
+	travelogue_creation(input: CreateTravelogueInput): AWSJSON
+	create_travelogue_subscription(input: CreateTravelogueSubscriptionInput): AWSJSON
+	close_travelogue_status(input: CloseTravelogueInput): AWSJSON
+	cancel_subscription(input: CancelTravelogueSubscriptionInput): AWSJSON
+	update_travelogue_details(input: UpdateTravelogueInput): AWSJSON
+	delete_travelogue_status(input: DeleteTravelogueInput): AWSJSON
+	pov_creation(input: CreatePovInput): AWSJSON
+	edit_pov(input: EditPovInput): AWSJSON
+	delete_pov(input: DeletePovInput): AWSJSON
+	post_creation(input: CreatePostInput): AWSJSON
+	delete_post(input: DeletePostInput): AWSJSON
+	update_fcm_token(input: UpdateFcmAppVerInput): AWSJSON
+	create_public_pov(input: createPublicPovInput): AWSJSON
+	create_post(input: createPostInput): AWSJSON
+	send_device_details(input: sendDeviceDetailsInput): AWSJSON
+	get_nearest_restaurants(input: get_nearest_restaurants_input): AWSJSON
+}
+
+type Query {
+	get_current_user(input: GetCurrentUserInput): AWSJSON
+	get_agent(input: GetAgentInput): AWSJSON
+	list_cotravellers(input: GetCotravellerInput): AWSJSON
+	list_viewers(input: GetViewerInput): AWSJSON
+	list_travelogues_of_user(input: ListTravelogueInput): AWSJSON
+	list_travelog_by_id(input: ListTravelogueByIdInput): AWSJSON
+	list_pov(input: ListPovInput): AWSJSON
+	list_post(input: ListPostInput): AWSJSON
+	list_my_subscriptions(input: ListSubscrptionInput): AWSJSON
+	get_travelog_subscriptions(input: GetTravelogueSubscrptionInput): AWSJSON
+	travelogS3URL_for_download(input: travelogueS3UrlInput): AWSJSON
+	display_featured_travelogues(input: display_featured_travelogues_input): AWSJSON
+	travelogS3URL(input: travelogueS3UrlInput): AWSJSON
+	list_agent_locations(dummyparam: String): AWSJSON
+	list_available_state_travelogues(input: departure_country_input): AWSJSON
+	list_available_countries(param: String): AWSJSON
+	getNearestPovs(input: get_nearest_povs_input): AWSJSON
+	list_global_posts(input: lisstGlobalPostsInput): AWSJSON
+	get_nearest_sherpas(input: get_nearest_sherpas_input): AWSJSON
+	display_sherpa_listing_decision: AWSJSON
+	display_restaurant_listing_decision: AWSJSON
+}
+
+schema {
+	query: Query
+	mutation: Mutation
+}
